@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="center-content">
+    <div class="glass-card" style="width: 100%; max-width: 600px; text-align: center;">
+        <a href="/predict" style="color: #b2bec3; text-decoration: none; margin-bottom: 20px; display: block; text-align: left;">&larr; Back to Dashboard</a>
+        <h2 style="color: #74b9ff; margin-bottom: 30px;"><i class="fas fa-camera"></i> Skin Lesion Scan</h2>
+        
+        <form method="POST" enctype="multipart/form-data" style="border: 2px dashed var(--glass-border); padding: 40px; border-radius: 10px; background: rgba(0,0,0,0.2);">
+            <div style="margin-bottom: 20px;">
+                <i class="fas fa-cloud-upload-alt" style="font-size: 3rem; color: #74b9ff;"></i>
+            </div>
+            <p style="margin-bottom: 20px;">Upload a high-resolution dermoscopic image</p>
+            <input type="file" name="file" accept="image/*" required style="display: block; margin: 0 auto 20px; width: auto; background: transparent; border: none; color: white;">
+            <button type="submit" class="btn-neuro" style="background: linear-gradient(45deg, #0984e3, #74b9ff);">Start Deep Learning Analysis</button>
+        </form>
+
+        {% if prediction %}
+        <div class="glass-card" style="margin-top: 30px; background: rgba(116, 185, 255, 0.1); border: 1px solid rgba(116, 185, 255, 0.3);">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+                {% if image_url %}
+                <img src="/{{ image_url }}" style="max-width: 150px; border-radius: 10px; border: 2px solid rgba(255,255,255,0.2);">
+                {% endif %}
+                <div style="text-align: left;">
+                    <p style="font-size: 1.1rem;">Prediction: <strong style="color: #ffeaa7;">{{ prediction }}</strong></p>
+                    <p style="color: #b2bec3;">AI Confidence: <strong>{{ confidence }}%</strong></p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% if alert_msg %} <script>alert("{{ alert_msg }}");</script> {% endif %}
+{% endblock %}

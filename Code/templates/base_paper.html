@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="glass-card" style="max-width: 900px; margin: 0 auto;">
+    <h1 style="color: #ff7675; text-align: center; margin-bottom: 10px;">Methodology & Research</h1>
+    <p style="color: #b2bec3; text-align: center; margin-bottom: 40px;">Technical specifications for the integrated Machine Learning models.</p>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+        <!-- Heart Section -->
+        <div>
+            <h3 style="color: #fab1a0; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px;">
+                <i class="fas fa-heartbeat"></i> Heart Disease
+            </h3>
+            <p style="color: #dfe6e9; line-height: 1.6; font-size: 0.95rem;">
+                <strong>Model:</strong> Random Forest Classifier.<br>
+                <strong>Dataset:</strong> UCI Cleveland Heart Disease (303 instances).<br>
+                <strong>Input Vectors:</strong> 13 clinical features including CP (Chest Pain), Thal (Thalium Stress), and Oldpeak (ST Depression).<br>
+                <strong>Metric:</strong> Optimized for Recall to minimize false negatives in critical cardiac events.
+            </p>
+        </div>
+
+        <!-- Kidney Section -->
+        <div>
+            <h3 style="color: #ffeaa7; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px;">
+                <i class="fas fa-procedures"></i> Kidney Disease
+            </h3>
+            <p style="color: #dfe6e9; line-height: 1.6; font-size: 0.95rem;">
+                <strong>Model:</strong> Random Forest Classifier.<br>
+                <strong>Dataset:</strong> Chronic Kidney Disease (CKD) Dataset (400 instances).<br>
+                <strong>Input Vectors:</strong> 24 features derived from blood chemistry (e.g., Serum Creatinine, BUN) and urinalysis.<br>
+                <strong>Performance:</strong> Achieves near-perfect classification due to distinct biomarkers in advanced CKD stages.
+            </p>
+        </div>
+    </div>
+
+    <!-- Skin Section -->
+    <div style="margin-top: 40px;">
+        <h3 style="color: #74b9ff; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px;">
+            <i class="fas fa-allergies"></i> Skin Cancer (Dermatology)
+        </h3>
+        <p style="color: #dfe6e9; line-height: 1.6; font-size: 0.95rem;">
+            <strong>Architecture:</strong> MobileNetV2 (Transfer Learning from ImageNet).<br>
+            <strong>Preprocessing:</strong> Images are resized to 128x128px, normalized, and augmented (rotation, shear) to improve generalization.<br>
+            <strong>Classes:</strong> 9 distinct conditions including Melanoma, Basal Cell Carcinoma, and Nevus.<br>
+            <strong>Optimization:</strong> Uses class weighting to handle imbalanced medical data, ensuring rare malignant cases are prioritized during training.
+        </p>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: rgba(0,0,0,0.2); border-radius: 10px;">
+        <h4 style="color: white; margin-bottom: 15px;"><i class="fas fa-server"></i> Application Stack</h4>
+        <ul style="color: #b2bec3; list-style-type: square; margin-left: 20px; line-height: 1.8;">
+            <li><strong>Backend Framework:</strong> Flask (Python 3.9+)</li>
+            <li><strong>Data Persistence:</strong> SQLAlchemy (SQLite) for User Management</li>
+            <li><strong>ML Inference:</strong> TensorFlow 2.x (Keras) & Scikit-Learn</li>
+            <li><strong>Frontend:</strong> Custom CSS3 Glassmorphism UI</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

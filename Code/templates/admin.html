@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 style="margin-bottom: 20px; color: #ff7675;">System Administration</h2>
+<div class="glass-card">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h3>Authorized Personnel</h3>
+        <span style="background: #ff7675; color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">
+            Total Staff: {{ users|length }}
+        </span>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Username</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>#{{ user.id }}</td>
+                <td>
+                    <i class="fas fa-user-circle" style="margin-right: 10px; color: #fab1a0;"></i>
+                    {{ user.username }}
+                </td>
+                <td>
+                    {% if user.role == 'admin' %}
+                        <span style="color: #ff7675; font-weight: bold;">System Admin</span>
+                    {% else %}
+                        Medical Staff
+                    {% endif %}
+                </td>
+                <td>
+                    <span style="color: #55efc4;"><i class="fas fa-circle" style="font-size: 0.6rem;"></i> Active</span>
+                </td>
+                <td>
+                    {% if user.role != 'admin' %}
+                    <a href="{{ url_for('delete_user', id=user.id) }}" class="btn-delete" onclick="return confirm('Permanently remove this user? This cannot be undone.')">
+                        <i class="fas fa-trash-alt"></i> Revoke
+                    </a>
+                    {% else %}
+                    <span style="opacity: 0.5; font-size: 0.8rem; cursor: not-allowed;"><i class="fas fa-lock"></i> Protected</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

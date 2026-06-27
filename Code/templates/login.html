@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="center-content">
+    <div class="glass-card" style="width: 100%; max-width: 400px;">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <i class="fas fa-user-md" style="font-size: 3rem; color: #ff7675;"></i>
+            <h2 style="margin-top: 10px;">Medical Access</h2>
+        </div>
+        <form method="POST">
+            <label>Username / Staff ID</label>
+            <input type="text" name="username" required placeholder="Enter ID">
+            
+            <label>Password</label>
+            <input type="password" name="password" required placeholder="Enter Password">
+            
+            <button type="submit" class="btn-neuro" style="width: 100%; margin-top: 20px;">Secure Login</button>
+        </form>
+        <p style="text-align: center; margin-top: 20px; font-size: 0.9rem;">
+            New Personnel? <a href="/register" style="color: #fab1a0;">Register Account</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,5 @@
+myenv311/
+__pycache__/
+*.pyc
+.vscode/
+.idea/

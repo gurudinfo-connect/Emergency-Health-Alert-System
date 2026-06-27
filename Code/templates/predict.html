@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="center-content">
+    <h1 style="margin-bottom: 40px; text-align: center; color: white;">Select Diagnostic Module</h1>
+    
+    <div style="display: flex; gap: 30px; flex-wrap: wrap; justify-content: center;">
+        
+        <!-- HEART MODULE CARD -->
+        <a href="/predict/heart" class="glass-card" style="width: 280px; text-align: center; text-decoration: none; color: white; transition: 0.3s;">
+            <div style="height: 100px; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-heartbeat" style="font-size: 4rem; color: #ff7675;"></i>
+            </div>
+            <h3 style="margin: 20px 0 10px;">Heart Disease</h3>
+            <p style="color: #b2bec3; font-size: 0.9rem;">
+                Predictive risk analysis based on 13 cardiovascular indicators.
+            </p>
+            <span class="btn-neuro" style="margin-top: 20px; font-size: 0.8rem; display: inline-block;">Launch Tool</span>
+        </a>
+
+        <!-- KIDNEY MODULE CARD -->
+        <a href="/predict/kidney" class="glass-card" style="width: 280px; text-align: center; text-decoration: none; color: white; transition: 0.3s;">
+            <div style="height: 100px; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-procedures" style="font-size: 4rem; color: #ffeaa7;"></i>
+            </div>
+            <h3 style="margin: 20px 0 10px;">Kidney Disease</h3>
+            <p style="color: #b2bec3; font-size: 0.9rem;">
+                Evaluation of chronic kidney health using 24 blood & urine markers.
+            </p>
+            <span class="btn-neuro" style="margin-top: 20px; font-size: 0.8rem; display: inline-block;">Launch Tool</span>
+        </a>
+
+        <!-- SKIN MODULE CARD -->
+        <a href="/predict/skin" class="glass-card" style="width: 280px; text-align: center; text-decoration: none; color: white; transition: 0.3s;">
+            <div style="height: 100px; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-camera" style="font-size: 4rem; color: #74b9ff;"></i>
+            </div>
+            <h3 style="margin: 20px 0 10px;">Skin Cancer</h3>
+            <p style="color: #b2bec3; font-size: 0.9rem;">
+                AI-powered image classification for dermatological screening.
+            </p>
+            <span class="btn-neuro" style="margin-top: 20px; font-size: 0.8rem; display: inline-block;">Launch Tool</span>
+        </a>
+
+    </div>
+</div>
+{% endblock %}

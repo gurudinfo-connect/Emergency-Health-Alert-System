@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="center-content">
+    <div class="glass-card" style="max-width: 1000px; width: 100%;">
+        <a href="/predict" style="color: #b2bec3; text-decoration: none; margin-bottom: 20px; display: block;">&larr; Back to Dashboard</a>
+        <h2 style="text-align: center; color: #ffeaa7; margin-bottom: 30px;"><i class="fas fa-procedures"></i> Kidney Disease Analysis</h2>
+        
+        <form method="POST" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;">
+            <!-- Vitals -->
+            <div style="grid-column: span 4; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 10px; color: #fab1a0;">Vitals & Chemistry</div>
+            <div><label>Age</label><input type="number" name="age" required></div>
+            <div><label>BP (mm/Hg)</label><input type="number" name="bp" required></div>
+            <div><label>Specific Gravity</label><input type="number" step="0.001" name="sg" required></div>
+            <div><label>Albumin</label><input type="number" name="al" required></div>
+
+            <div><label>Sugar</label><input type="number" name="su" required></div>
+            <div><label>Glucose Random</label><input type="number" name="bgr" required></div>
+            <div><label>Blood Urea</label><input type="number" name="bu" required></div>
+            <div><label>Serum Creatinine</label><input type="number" step="0.1" name="sc" required></div>
+            <div><label>Sodium</label><input type="number" step="0.1" name="sod" required></div>
+            <div><label>Potassium</label><input type="number" step="0.1" name="pot" required></div>
+            <div><label>Hemoglobin</label><input type="number" step="0.1" name="hemo" required></div>
+            <div><label>Packed Cell Vol</label><input type="number" name="pcv" required></div>
+            <div><label>WBC Count</label><input type="number" name="wc" required></div>
+            <div><label>RBC Count</label><input type="number" step="0.1" name="rc" required></div>
+
+            <!-- Categorical -->
+            <div style="grid-column: span 4; border-bottom: 1px solid rgba(255,255,255,0.1); margin: 15px 0 10px 0; color: #fab1a0;">Medical Indicators</div>
+            
+            <div style="grid-column: span 2;"><label>Red Blood Cells</label><select name="rbc"><option>normal</option><option>abnormal</option></select></div>
+            <div style="grid-column: span 2;"><label>Pus Cell</label><select name="pc"><option>normal</option><option>abnormal</option></select></div>
+            
+            <div><label>Pus Clumps</label><select name="pcc"><option>notpresent</option><option>present</option></select></div>
+            <div><label>Bacteria</label><select name="ba"><option>notpresent</option><option>present</option></select></div>
+            <div><label>Hypertension</label><select name="htn"><option>no</option><option>yes</option></select></div>
+            <div><label>Diabetes</label><select name="dm"><option>no</option><option>yes</option></select></div>
+            <div><label>Coronary Dis</label><select name="cad"><option>no</option><option>yes</option></select></div>
+            <div><label>Appetite</label><select name="appet"><option>good</option><option>poor</option></select></div>
+            <div><label>Pedal Edema</label><select name="pe"><option>no</option><option>yes</option></select></div>
+            <div><label>Anemia</label><select name="ane"><option>no</option><option>yes</option></select></div>
+
+            <button type="submit" class="btn-neuro" style="grid-column: span 4; margin-top: 20px; background: linear-gradient(45deg, #fdcb6e, #e17055);">Analyze Kidney Function</button>
+        </form>
+
+        {% if prediction %}
+        <div style="margin-top: 30px; padding: 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; text-align: center; background: rgba(0,0,0,0.3);">
+            <h3>Result: <span style="color: {% if 'Chronic' in prediction %}#ff7675{% else %}#55efc4{% endif %}">{{ prediction }}</span></h3>
+            <p style="font-size: 0.9rem; color: #b2bec3; margin-top: 10px;">Automated result based on CKD dataset parameters.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% if alert_msg %} <script>alert("{{ alert_msg }}");</script> {% endif %}
+{% endblock %}

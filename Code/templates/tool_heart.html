@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="center-content">
+    <div class="glass-card" style="max-width: 800px; width: 100%;">
+        <a href="/predict" style="color: #b2bec3; text-decoration: none; margin-bottom: 20px; display: block;">&larr; Back to Dashboard</a>
+        <h2 style="text-align: center; color: #ff7675; margin-bottom: 30px;"><i class="fas fa-heartbeat"></i> Heart Disease Analysis</h2>
+        
+        <form method="POST" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div><label>Age (Years)</label><input type="number" name="age" required placeholder="e.g. 55"></div>
+            <div><label>Sex</label><select name="sex"><option>Male</option><option>Female</option></select></div>
+            
+            <div><label>Chest Pain Type</label><select name="cp"><option>typical angina</option><option>atypical angina</option><option>non-anginal</option><option>asymptomatic</option></select></div>
+            <div><label>Resting Blood Pressure</label><input type="number" name="trestbps" required placeholder="mm Hg"></div>
+            
+            <div><label>Serum Cholesterol</label><input type="number" name="chol" required placeholder="mg/dl"></div>
+            <div><label>Fasting Blood Sugar > 120</label><select name="fbs"><option>FALSE</option><option>TRUE</option></select></div>
+            
+            <div><label>Resting ECG Results</label><select name="restecg"><option>normal</option><option>lv hypertrophy</option><option>st-t abnormality</option></select></div>
+            <div><label>Max Heart Rate</label><input type="number" name="thalach" required></div>
+            
+            <div><label>Exercise Induced Angina</label><select name="exang"><option>FALSE</option><option>TRUE</option></select></div>
+            <div><label>ST Depression (Oldpeak)</label><input type="number" step="0.1" name="oldpeak" required placeholder="e.g. 1.2"></div>
+            
+            <div><label>Slope of Peak Exercise</label><select name="slope"><option>upsloping</option><option>flat</option><option>downsloping</option></select></div>
+            <div><label>Major Vessels (0-3)</label><input type="number" name="ca" required></div>
+            <div style="grid-column: span 2;"><label>Thalium Stress Test</label><select name="thal"><option>normal</option><option>fixed defect</option><option>reversable defect</option></select></div>
+            
+            <button type="submit" class="btn-neuro" style="grid-column: span 2; margin-top: 20px;">Run Prediction Model</button>
+        </form>
+
+        {% if prediction %}
+        <div style="margin-top: 30px; padding: 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; text-align: center; background: rgba(0,0,0,0.3);">
+            <h3>Analysis Result: <span style="color: {% if 'High' in prediction %}#ff7675{% else %}#55efc4{% endif %}">{{ prediction }}</span></h3>
+            <p style="font-size: 0.9rem; color: #b2bec3; margin-top: 10px;">Please consult a cardiologist for clinical correlation.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% if alert_msg %} <script>alert("{{ alert_msg }}");</script> {% endif %}
+{% endblock %}
